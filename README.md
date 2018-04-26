@@ -1,5 +1,6 @@
-# bali
-:coffee: (Bash) Arch Linux Install
+# :coffee: bali
+
+(Bash) Arch Linux Install
 
 
 ### Instructions:
