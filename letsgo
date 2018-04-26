@@ -1,0 +1,39 @@
+#!/bin/bash
+
+clear
+
+echo "  Updating the system..."
+yaourt -Syuu --noconfirm > /dev/null
+
+echo "  Installing wifi packages..."
+yaourt -S --noconfirm iw wpa_supplicant dialog &> /dev/null
+
+echo "  Installing terminal stuff..."
+yaourt -S --noconfirm zsh htop rxvt-unicode-pixbuf tmux neovim stow &> /dev/null
+
+echo "  Installing Dev Stuff"
+yaourt -S --noconfirm bash-language-server-bin python-language-server atom apm jetbrains-toolbox &> /dev/null
+
+echo "  Installing ricing shit..."
+yaourt -S --noconfirm polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
+
+echo "     ...fonts "
+yaourt -S --noconfirm tamzen-font nerd-fonts-complete  &> /dev/null
+
+echo "  Installing display tools..."
+yaourt -S --noconfirm mons  &> /dev/null
+
+echo "  Installing music & audio manager..."
+yaourt -S --noconfirm cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
+
+echo "  Installing Libre Office..."
+yaourt -S --noconfirm libreoffice-fresh &> /dev/null
+
+echo "  Installing compression software..."
+yaourt -S --noconfirm zip unzip unrar p7zip &> /dev/null
+
+
+echo "  Installing the battery manager..."
+yaourt -S --noconfirm powertop tlp &> /dev/null
+echo "  Installing touchpad packages..."
+yaourt -S --noconfirm xf86-input-synaptics xf86-input-libinput &> /dev/null
