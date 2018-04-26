@@ -2,6 +2,9 @@
 
 clear
 
+echo "  Installing Yaourt..."
+pacman -Syy --noconfirm yaourt > /dev/null
+
 echo "  Updating the system..."
 yaourt -Syuu --noconfirm > /dev/null
 
