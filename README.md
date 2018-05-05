@@ -1,4 +1,4 @@
-# :coffee: bali
+# :beach_umbrella: bali
 
 (Bash) Arch Linux Install
 
