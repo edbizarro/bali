@@ -3,16 +3,16 @@
 clear
 
 echo "  Ensure keys are up to date..."
-sudo pacman-key --refresh-keys > /dev/null
+sudo pacman-key --refresh-keys &> /dev/null
 
 echo "  Update the system..."
-sudo pacman -Syy > /dev/null
+sudo pacman -Syy &> /dev/null
 
 echo "  Installing Yaourt..."
-pacman -Syy --noconfirm yaourt > /dev/null
+pacman -Syy --noconfirm yaourt &> /dev/null
 
 echo "  Updating the AUR packages..."
-yaourt -Syuu --noconfirm > /dev/null
+yaourt -Syuu --noconfirm &> /dev/null
 
 echo "  DateTime..."
 yaourt -Syuu --noconfirm  ntp > /dev/null
