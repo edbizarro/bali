@@ -3,7 +3,7 @@
 clear
 
 echo "  Ensure keys are up to date..."
-sudo pacman -Syy
+sudo pacman-key --refresh-keys
 
 echo "  Update the system..."
 sudo pacman -Syy
