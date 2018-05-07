@@ -1,6 +1,6 @@
 # :beach_umbrella: bali
 
-(Bash) Arch Linux Install
+(Bash) Arch Linux Installer
 
 
 ### Instructions:
