@@ -17,8 +17,9 @@ yaourt -Syuu --noconfirm > /dev/null
 echo "  DateTime..."
 yaourt -Syuu --noconfirm  ntp > /dev/null
 sudo systemctl enable ntpd.service > /dev/null
-ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+sudo ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
+echo "  Connectivity shit..."
 WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
     echo "==> ${WIRELESS_DEV} interface detected"
@@ -29,7 +30,7 @@ fi
 WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRED_DEV ]]; then
     echo "==> ${WIRED_DEV} interface detected"
-    arch "systemctl enable dhcpcd@${WIRED_DEV}.service"
+    sudo systemctl enable dhcpcd@${WIRED_DEV}.service
 fi
 
 if ! grep "^noarp$" /etc/dhcpcd.conf; then
