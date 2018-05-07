@@ -3,10 +3,10 @@
 clear
 
 echo "  Ensure keys are up to date..."
-sudo pacman-key --refresh-keys
+sudo pacman-key --refresh-keys > /dev/null
 
 echo "  Update the system..."
-sudo pacman -Syy
+sudo pacman -Syy > /dev/null
 
 echo "  Installing Yaourt..."
 pacman -Syy --noconfirm yaourt > /dev/null
@@ -16,7 +16,7 @@ yaourt -Syuu --noconfirm > /dev/null
 
 echo "  DateTime..."
 yaourt -Syuu --noconfirm  ntp > /dev/null
-sudo systemctl enable ntpd.service
+sudo systemctl enable ntpd.service > /dev/null
 ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
