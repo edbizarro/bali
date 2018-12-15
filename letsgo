@@ -41,7 +41,7 @@ echo "  Installing terminal stuff..."
 yaourt -S --noconfirm zsh htop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm &> /dev/null
 
 echo "  Installing dev stuff"
-yaourt -S --noconfirm pyenv pyenv-virtualenv node yarn bash-language-server-bin python-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose iotop &> /dev/null
+yaourt -S --noconfirm pyenv pyenv-virtualenv node yarn bash-language-server-bin python-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose iotop pcloud-drive &> /dev/null
 
 echo "  Installing ricing shit..."
 yaourt -S --noconfirm polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
