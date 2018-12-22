@@ -38,10 +38,13 @@ if ! grep "^noarp$" /etc/dhcpcd.conf; then
 fi
 
 echo "  Installing terminal stuff..."
-yaourt -S --noconfirm zsh htop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm &> /dev/null
+yaourt -S --noconfirm zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm &> /dev/null
 
 echo "  Installing dev stuff"
-yaourt -S --noconfirm pyenv pyenv-virtualenv node yarn bash-language-server-bin python-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose iotop pcloud-drive &> /dev/null
+yaourt -S --noconfirm pyenv pyenv-virtualenv node yarn bash-language-server-bin python-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
+
+echo "  Installing productivity tools"
+yaourt -S --noconfirm zip unzip unrar p7zip libreoffice-fresh pcloud-drive boostnote &> /dev/null
 
 echo "  Installing ricing shit..."
 yaourt -S --noconfirm polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
@@ -55,14 +58,8 @@ yaourt -S --noconfirm bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils 
 echo "  Installing music & audio manager..."
 yaourt -S --noconfirm cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
-echo "  Installing Libre Office..."
-yaourt -S --noconfirm libreoffice-fresh &> /dev/null
-
-echo "  Installing compression software..."
-yaourt -S --noconfirm zip unzip unrar p7zip &> /dev/null
-
-
 echo "  Installing the battery manager..."
 yaourt -S --noconfirm powertop tlp &> /dev/null
+
 echo "  Installing touchpad packages..."
 yaourt -S --noconfirm xf86-input-synaptics xf86-input-libinput &> /dev/null
