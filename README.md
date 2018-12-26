@@ -25,6 +25,7 @@ chmod +x letsgo
 - wpa_supplicant
 - dialog
 - netctl
+- vnstat
 
 #### Terminal stuff
 
