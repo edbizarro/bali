@@ -24,7 +24,7 @@ WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
     echo "==> ${WIRELESS_DEV} interface detected"
     echo "  Installing wifi packages..."
-    yaourt -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl &> /dev/null
+    yaourt -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat &> /dev/null
 fi
 
 WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}'| sed 's/://' | sed '1!d')
