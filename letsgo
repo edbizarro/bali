@@ -53,7 +53,12 @@ echo "     ...fonts "
 yaourt -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka  &> /dev/null
 
 echo "  Installing display drivers & tools..."
-yaourt -S --noconfirm i8kutils tcl tk acpi dell-bios-fan-control-git bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
+yaourt -S --noconfirm bumblebee mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
+
+# https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
+echo "  Temp Cº..."
+yaourt -S --noconfirm i8kutils tcl tk acpi dell-bios-fan-control-git &> /dev/null
+
 
 echo "  Installing music & audio manager..."
 yaourt -S --noconfirm cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
