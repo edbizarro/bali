@@ -41,7 +41,7 @@ echo "  Installing terminal stuff..."
 yaourt -S --noconfirm gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm &> /dev/null
 
 echo "  Installing dev stuff"
-yaourt -S --noconfirm pyenv pyenv-virtualenv nodejs yarn dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
+yaourt -S --noconfirm pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
 apm install ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap &> /dev/null
 
 echo "  Installing productivity tools"
