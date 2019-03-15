@@ -34,7 +34,7 @@ if [[ -n $WIRED_DEV ]]; then
 fi
 
 if ! grep "^noarp$" /etc/dhcpcd.conf; then
-    sudo echo -e "\nnoarp" >> /etc/dhcpcd.conf
+    echo -e "\nnoarp" | sudo tee -a /etc/dhcpcd.conf
 fi
 
 echo "  Installing terminal stuff..."
