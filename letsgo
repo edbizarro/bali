@@ -62,7 +62,7 @@ yaourt -S --noconfirm i8kutils tcl tk acpi dell-bios-fan-control-git &> /dev/nul
 
 
 echo "  Installing music & audio manager..."
-yaourt -S --noconfirm cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
+yaourt -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 echo "  Installing the battery manager..."
 yaourt -S --noconfirm powertop tlp &> /dev/null
