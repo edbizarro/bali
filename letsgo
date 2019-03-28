@@ -65,7 +65,9 @@ echo "  Installing music & audio manager..."
 yaourt -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 echo "  Installing the battery manager..."
-yaourt -S --noconfirm powertop tlp &> /dev/null
+yaourt -S --noconfirm powertop laptop-mode-tools &> /dev/null
+sudo systemctl enable laptop-mode.service
+sudo powertop --auto-tune
 
 echo "  Installing touchpad packages..."
 yaourt -S --noconfirm xf86-input-synaptics xf86-input-libinput &> /dev/null
