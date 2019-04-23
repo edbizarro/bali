@@ -2,6 +2,9 @@
 
 clear
 
+echo "  Misc..."
+sudo pacman -Syy --noconfirm openssh &> /dev/null
+
 echo "  Ensure keys are up to date..."
 sudo pacman-key --refresh-keys &> /dev/null
 
@@ -60,13 +63,18 @@ yaourt -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia
 echo "  Temp Cº..."
 yaourt -S --noconfirm i8kutils tcl tk acpi dell-bios-fan-control-git &> /dev/null
 
-
 echo "  Installing music & audio manager..."
 yaourt -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 echo "  Installing the battery manager..."
-yaourt -S --noconfirm powertop laptop-mode-tools &> /dev/null
+yaourt -S --noconfirm powertop laptop-mode-tools acpid &> /dev/null
+
+echo "  Enabling laptop-mode.service and acpid..."
 sudo systemctl enable laptop-mode.service
+sudo systemctl enable acpid.service
+
+echo "  Calibrating powertop..."
+sudo powertop --calibrate
 sudo powertop --auto-tune
 
 echo "  Installing touchpad packages..."
