@@ -51,7 +51,7 @@ echo "  Installing productivity tools"
 yaourt -S --noconfirm zip unzip unrar p7zip libreoffice-fresh pcloud-drive boostnote &> /dev/null
 
 echo "  Installing ricing shit..."
-yaourt -S --noconfirm light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
+yaourt -S --noconfirm thunar gvfs light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
 
 echo "     ...fonts "
 yaourt -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka  &> /dev/null
