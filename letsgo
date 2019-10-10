@@ -14,7 +14,7 @@ sudo pacman -Syy &> /dev/null
 echo "  Installing Yay..."
 git clone https://aur.archlinux.org/yay.git
 cd yay
-sudo makepkg -si
+makepkg -si
 
 echo "  Updating the AUR packages..."
 yay -Syuu --noconfirm &> /dev/null
