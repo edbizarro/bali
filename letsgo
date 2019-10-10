@@ -3,7 +3,7 @@
 clear
 
 echo "  Misc..."
-sudo pacman -Syy --noconfirm openssh &> /dev/null
+sudo pacman -Syy --noconfirm openssh git &> /dev/null
 
 echo "  Ensure keys are up to date..."
 sudo pacman-key --refresh-keys &> /dev/null
@@ -11,14 +11,16 @@ sudo pacman-key --refresh-keys &> /dev/null
 echo "  Update the system..."
 sudo pacman -Syy &> /dev/null
 
-echo "  Installing Yaourt..."
-pacman -Syy --noconfirm yaourt &> /dev/null
+echo "  Installing Yay..."
+git clone https://aur.archlinux.org/yay.git
+cd yay
+sudo makepkg -si
 
 echo "  Updating the AUR packages..."
-yaourt -Syuu --noconfirm &> /dev/null
+yay -Syuu --noconfirm &> /dev/null
 
 echo "  DateTime..."
-yaourt -Syuu --noconfirm  ntp &> /dev/null
+yay -S --noconfirm  ntp &> /dev/null
 sudo systemctl enable ntpd.service &> /dev/null
 sudo ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
@@ -27,7 +29,7 @@ WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
     echo "==> ${WIRELESS_DEV} interface detected"
     echo "  Installing wifi packages..."
-    yaourt -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat &> /dev/null
+    yay -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat &> /dev/null
 fi
 
 WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}'| sed 's/://' | sed '1!d')
@@ -41,35 +43,35 @@ if ! grep "^noarp$" /etc/dhcpcd.conf; then
 fi
 
 echo "  Installing terminal stuff..."
-yaourt -S --noconfirm gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm starship &> /dev/null
+yay -S --noconfirm gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm starship &> /dev/null
 
 echo "  Installing dev stuff"
-yaourt -S --noconfirm pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
+yay -S --noconfirm pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
 apm install language-blade autocomplete-paths busy-signal atom-ide-signature-help atom-ide-markdown-service terraform-fmt ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap &> /dev/null
 
 echo "  Installing productivity tools"
-yaourt -S --noconfirm zip unzip unrar p7zip libreoffice-fresh pcloud-drive boostnote &> /dev/null
+yay -S --noconfirm zip unzip unrar p7zip libreoffice-fresh pcloud-drive boostnote &> /dev/null
 
 echo "  Installing ricing shit..."
-yaourt -S --noconfirm thunar gvfs light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
+yay -S --noconfirm thunar gvfs light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
 
 echo "     ...fonts "
-yaourt -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka  &> /dev/null
+yay -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka  &> /dev/null
 
 echo "  Installing display drivers & tools..."
-yaourt -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
+yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 echo "  Temp Cº..."
-yaourt -S --noconfirm thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald &> /dev/null
+yay -S --noconfirm thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald &> /dev/null
 sudo systemctl enable thermald.service
 sudo systemctl start thermald.service
 
 echo "  Installing music & audio manager..."
-yaourt -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
+yay -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 echo "  Installing the battery manager..."
-yaourt -S --noconfirm powertop laptop-mode-tools acpid &> /dev/null
+yay -S --noconfirm powertop laptop-mode-tools acpid &> /dev/null
 
 echo "  Enabling laptop-mode.service and acpid..."
 sudo systemctl enable laptop-mode.service
@@ -80,4 +82,4 @@ sudo powertop --calibrate
 sudo powertop --auto-tune
 
 echo "  Installing touchpad packages..."
-yaourt -S --noconfirm xf86-input-synaptics xf86-input-libinput &> /dev/null
+yay -S --noconfirm xf86-input-synaptics xf86-input-libinput &> /dev/null
