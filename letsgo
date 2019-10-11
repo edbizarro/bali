@@ -71,6 +71,7 @@ echo "  Installing music & audio manager..."
 yay -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 echo "  Installing the battery manager..."
+yay -R --noconfirm tlp &> /dev/null
 yay -S --noconfirm powertop laptop-mode-tools acpid &> /dev/null
 
 echo "  Enabling laptop-mode.service and acpid..."
