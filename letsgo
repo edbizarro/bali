@@ -43,7 +43,7 @@ if ! grep "^noarp$" /etc/dhcpcd.conf; then
 fi
 
 echo "  Installing terminal stuff..."
-yay -S --noconfirm gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm starship &> /dev/null
+yay -S --noconfirm fasd gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm starship &> /dev/null
 
 echo "  Installing dev stuff"
 yay -S --noconfirm pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
