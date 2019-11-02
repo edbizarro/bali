@@ -59,7 +59,10 @@ echo "     ...fonts "
 yay -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka  &> /dev/null
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
+yay -S --noconfirm 
+
+
+blebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
 sudo systemctl enable bumblebee.service
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
@@ -69,7 +72,7 @@ sudo systemctl enable thermald.service
 sudo systemctl start thermald.service
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm mpv cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
+yay -S --noconfirm mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 echo "  Installing the battery manager..."
 yay -S --noconfirm tlp powertop laptop-mode-tools acpid &> /dev/null
