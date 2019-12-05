@@ -1,0 +1,8 @@
+---
+package:
+  curl:
+    installed: true
+  sudo:
+    installed: true
+  yay:
+    installed: true
