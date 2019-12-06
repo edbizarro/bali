@@ -65,6 +65,7 @@ sudo systemctl enable bumblebeed.service
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 echo "  Temp Cº..."
 yay -S --noconfirm thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald &> /dev/null
+sudo dell-bios-fan-control 0
 sudo systemctl enable thermald.service
 sudo systemctl start thermald.service
 
