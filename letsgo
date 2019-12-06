@@ -83,4 +83,4 @@ sudo powertop --calibrate
 sudo powertop --auto-tune
 
 echo "  Installing touchpad packages..."
-yay -S --noconfirm xf86-input-libinput &> /dev/null
+yay -S --noconfirm libinput xf86-input-libinput &> /dev/null
