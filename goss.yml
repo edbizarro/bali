@@ -6,3 +6,7 @@ package:
     installed: true
   yay:
     installed: true
+  fasd:
+    installed: true
+  gotop:
+    installed: true
