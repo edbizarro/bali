@@ -10,3 +10,5 @@ package:
     installed: true
   gotop:
     installed: true
+  ansible:
+    installed: true
