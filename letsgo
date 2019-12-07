@@ -56,7 +56,7 @@ echo "  Installing ricing shit..."
 yay -S --noconfirm thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
 
 echo "     ...fonts "
-yay -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka  &> /dev/null
+yay -S --noconfirm tamzen-font nerd-fonts-complete ttf-iosevka-git undefined-medium-fonts  &> /dev/null
 
 echo "  Installing display drivers & tools..."
 yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
