@@ -50,7 +50,7 @@ yay -S --noconfirm borg-bin google-chrome ansible terraform-inventory-git pyenv 
 apm install language-blade autocomplete-paths busy-signal atom-ide-signature-help atom-ide-markdown-service terraform-fmt ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap &> /dev/null
 
 echo "  Installing productivity tools"
-yay -S --noconfirm zip unzip unrar p7zip libreoffice-fresh pcloud-drive boostnote &> /dev/null
+yay -S --noconfirm slack-desktop zip unzip unrar p7zip libreoffice-fresh pcloud-drive boostnote &> /dev/null
 
 echo "  Installing ricing shit..."
 yay -S --noconfirm thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
