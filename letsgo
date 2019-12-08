@@ -64,20 +64,21 @@ sudo systemctl enable bumblebeed.service
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 echo "  Temp Cº..."
-yay -S --noconfirm thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald &> /dev/null
+yay -S --noconfirm lm_sensors thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald &> /dev/null
 sudo dell-bios-fan-control 0
 sudo systemctl enable thermald.service
+sudo systemctl enable i8kmon.service
 sudo systemctl start thermald.service
 
 echo "  Installing music & audio manager..."
 yay -S --noconfirm mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
-echo "  Installing the battery manager..."
-yay -S --noconfirm powertop laptop-mode-tools acpid &> /dev/null
+# https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
+echo "  Installing the battery and power manager..."
+yay -S --noconfirm powertop laptop-mode-tools acpi &> /dev/null
 
-echo "  Enabling laptop-mode.service and acpid..."
+echo "  Enabling power services"
 sudo systemctl enable laptop-mode.service
-sudo systemctl enable acpid.service
 
 echo "  Calibrating powertop..."
 sudo powertop --calibrate
