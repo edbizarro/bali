@@ -53,7 +53,7 @@ echo "  Installing productivity tools"
 yay -S --noconfirm slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser google-drive-ocamlfuse boostnote &> /dev/null
 
 echo "  Installing ricing shit..."
-yay -S --noconfirm thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
+yay -S --noconfirm neofetch thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
 
 echo "     ...fonts "
 yay -S --noconfirm tamzen-font nerd-fonts-complete ttf-unifont  &> /dev/null
