@@ -71,7 +71,7 @@ sudo systemctl enable i8kmon.service
 sudo systemctl start thermald.service
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm spotify mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
+yay -S --noconfirm picard spotify mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
 
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Installing the battery and power manager..."
