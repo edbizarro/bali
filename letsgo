@@ -3,13 +3,13 @@
 clear
 
 echo "  Misc..."
-sudo pacman -Syy --noconfirm openssh git &> /dev/null
+sudo pacman -Syy --noconfirm openssh git
 
 echo "  Ensure keys are up to date..."
-sudo pacman-key --refresh-keys &> /dev/null
+sudo pacman-key --refresh-keys
 
 echo "  Update the system..."
-sudo pacman -Syy &> /dev/null
+sudo pacman -Syy
 
 echo "  Installing Yay..."
 git clone https://aur.archlinux.org/yay.git
@@ -17,11 +17,11 @@ cd yay
 makepkg -si
 
 echo "  Updating the AUR packages..."
-yay -Syuu --noconfirm &> /dev/null
+yay -Syuu --noconfirm
 
 echo "  DateTime..."
-yay -S --noconfirm  ntp &> /dev/null
-sudo systemctl enable ntpd.service &> /dev/null
+yay -S --noconfirm  ntp
+sudo systemctl enable ntpd.service
 sudo ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
 echo "  Connectivity shit..."
@@ -29,7 +29,7 @@ WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
     echo "==> ${WIRELESS_DEV} interface detected"
     echo "  Installing wifi packages..."
-    yay -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat &> /dev/null
+    yay -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat
 fi
 
 WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}'| sed 's/://' | sed '1!d')
@@ -43,39 +43,39 @@ if ! grep "^noarp$" /etc/dhcpcd.conf; then
 fi
 
 echo "  Installing terminal stuff..."
-yay -S --noconfirm aria2 rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm starship &> /dev/null
+yay -S --noconfirm aria2 rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop rxvt-unicode-pixbuf tmux neovim stow ncdu slurm starship
 
 echo "  Installing dev stuff"
-yay -S --noconfirm kubernetes-helm minikube kubectl python-black tldr borg-bin google-chrome ansible terraform-inventory-git pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose &> /dev/null
-apm install editorconfig language-blade autocomplete-paths busy-signal atom-ide-signature-help atom-ide-markdown-service terraform-fmt ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap &> /dev/null
+yay -S --noconfirm kubernetes-helm minikube kubectl python-black tldr borg-bin google-chrome ansible terraform-inventory-git pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose
+apm install editorconfig language-blade autocomplete-paths busy-signal atom-ide-signature-help atom-ide-markdown-service terraform-fmt ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap
 
 echo "  Installing productivity tools"
-yay -S --noconfirm slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser google-drive-ocamlfuse boostnote &> /dev/null
+yay -S --noconfirm slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser google-drive-ocamlfuse boostnote
 
 echo "  Installing ricing shit..."
-yay -S --noconfirm neofetch thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen  &> /dev/null
+yay -S --noconfirm neofetch thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen 
 
 echo "     ...fonts "
-yay -S --noconfirm ttf-fira-code jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont  &> /dev/null
+yay -S --noconfirm ttf-fira-code jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons  &> /dev/null
+yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons 
 sudo systemctl enable bumblebeed.service
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 echo "  Temp Cº..."
-yay -S --noconfirm lm_sensors thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald &> /dev/null
+yay -S --noconfirm lm_sensors thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald
 sudo dell-bios-fan-control 0
 sudo systemctl enable thermald.service
 sudo systemctl enable i8kmon.service
 sudo systemctl start thermald.service
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm picard spotify mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git &> /dev/null
+yay -S --noconfirm picard spotify mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git
 
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Installing the battery and power manager..."
-yay -S --noconfirm powertop laptop-mode-tools acpi &> /dev/null
+yay -S --noconfirm powertop laptop-mode-tools acpi
 
 echo "  Enabling power services"
 sudo systemctl enable laptop-mode.service
@@ -85,4 +85,4 @@ sudo powertop --calibrate
 sudo powertop --auto-tune
 
 echo "  Installing touchpad packages..."
-yay -S --noconfirm libinput xf86-input-libinput &> /dev/null
+yay -S --noconfirm libinput xf86-input-libinput
