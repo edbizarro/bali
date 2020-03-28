@@ -76,13 +76,12 @@ yay -S --noconfirm picard spotify mopidy-spotify-web bum-git mpv mpc cava alsa-u
 
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Installing the battery and power manager..."
-yay -S --noconfirm powertop laptop-mode-tools acpi
+yay -S --noconfirm powertop tlp acpi
 
 echo "  Enabling power services"
-sudo systemctl enable laptop-mode.service
+sudo systemctl enable tlp.service
 
-echo "  Calibrating powertop..."
-sudo powertop --calibrate
+echo "  Auto tune powertop..."
 sudo powertop --auto-tune
 
 echo "  Installing touchpad packages..."
