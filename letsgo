@@ -56,7 +56,7 @@ echo "  Installing ricing shit..."
 yay -S --noconfirm neofetch thunar light polybar compton scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen 
 
 echo "     ...fonts "
-yay -S --noconfirm ttf-fira-code jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
+yay -S --noconfirm ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
 
 echo "  Installing display drivers & tools..."
 yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons 
@@ -64,11 +64,12 @@ sudo systemctl enable bumblebeed.service
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 echo "  Temp Cº..."
-yay -S --noconfirm lm_sensors thermald i8kutils tcl tk acpi dell-bios-fan-control-git thermald
+yay -S --noconfirm lm_sensors thermald i8kutils tcl tk acpi dell-bios-fan-control-git
 sudo dell-bios-fan-control 0
 sudo systemctl enable thermald.service
 sudo systemctl enable i8kmon.service
 sudo systemctl start thermald.service
+sudo systemctl start i8kmon.service
 
 echo "  Installing music & audio manager..."
 yay -S --noconfirm picard spotify mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git
