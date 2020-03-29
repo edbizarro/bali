@@ -12,7 +12,7 @@ chmod +x letsgo
 ```
 ### Post install
 
-In case you have a Dell laptop (wich is my case) [see](http://www.saminiir.com/configuring-arch-linux-on-dell-xps-15/)
+In case you have a Dell laptop (like me) [see](http://www.saminiir.com/configuring-arch-linux-on-dell-xps-15/)
 
 ---
 
