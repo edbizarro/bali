@@ -73,11 +73,11 @@ sudo systemctl enable i8kmon.service
 sudo systemctl enable tlp.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 
-echo "  Installing music & audio manager..."
-yay -S --noconfirm picard spotify bum-git mpv mpc cava alsa-utils alsa-lib ncmpcpp lyvi-git
-
 echo "  Auto tune powertop..."
 sudo powertop --auto-tune
+
+echo "  Installing music & audio manager..."
+yay -S --noconfirm picard spotify bum-git mpv mpc cava alsa-utils alsa-lib ncmpcpp lyvi-git
 
 echo "  Installing touchpad packages..."
 yay -S --noconfirm libinput xf86-input-libinput
