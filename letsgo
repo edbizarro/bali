@@ -59,7 +59,7 @@ echo "     ...fonts "
 yay -S --noconfirm ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons inxi glxinfo
+  yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons inxi glxinfo
 sudo systemctl enable bumblebeed.service
 sudo usermod -aG bumblebee $USER
 
@@ -74,7 +74,7 @@ sudo systemctl enable tlp.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm picard spotify mopidy-spotify-web bum-git mpv mpc cava alsa-utils alsa-lib mopidy-git mopidy-spotify mopidy-scrobbler ncmpcpp mopidy-spotify-tunigo lyvi-git
+yay -S --noconfirm picard spotify bum-git mpv mpc cava alsa-utils alsa-lib ncmpcpp lyvi-git
 
 echo "  Auto tune powertop..."
 sudo powertop --auto-tune
