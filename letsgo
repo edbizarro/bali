@@ -29,7 +29,7 @@ WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
     echo "==> ${WIRELESS_DEV} interface detected"
     echo "  Installing wifi packages..."
-    yay -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat
+    yay -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog wifi-menu netctl vnstat
 fi
 
 WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}'| sed 's/://' | sed '1!d')
@@ -59,7 +59,7 @@ echo "     ...fonts "
 yay -S --noconfirm ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bumblebee primus mesa xf86-video-intel nvidia lib32-nvidia-utils lib32-virtualgl nvidia-settings bbswitch mons 
+yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons 
 sudo systemctl enable bumblebeed.service
 sudo usermod -aG bumblebee $USER
 
