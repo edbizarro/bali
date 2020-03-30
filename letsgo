@@ -59,7 +59,7 @@ echo "     ...fonts "
 yay -S --noconfirm ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons 
+yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons inxi glxinfo
 sudo systemctl enable bumblebeed.service
 sudo usermod -aG bumblebee $USER
 
