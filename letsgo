@@ -53,10 +53,10 @@ echo "  Installing productivity tools"
 yay -S --noconfirm slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser boostnote
 
 echo "  Installing ricing shit..."
-yay -S --noconfirm neofetch thunar light polybar picom scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen 
+yay -S --noconfirm lxappearance neofetch thunar light polybar picom scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen 
 
 echo "     ...fonts "
-yay -S --noconfirm ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
+yay -S --noconfirm otf-san-francisco-pro cozette-ttf ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete ttf-unifont 
 
 echo "  Installing display drivers & tools..."
   yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons inxi glxinfo
@@ -66,7 +66,7 @@ sudo usermod -aG bumblebee $USER
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Temp Cº, battery and power manager..."
-yay -S --noconfirm lm_sensors thermald i8kutils tcl tk dell-bios-fan-control-git powertop tlp acpi
+yay -S --noconfirm lm_sensors thermald i8kutils tcl tk dell-bios-fan-control-git powertop tlp acpi acpid
 sudo dell-bios-fan-control 0
 sudo systemctl enable thermald.service
 sudo systemctl enable i8kmon.service
