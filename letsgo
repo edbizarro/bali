@@ -24,6 +24,8 @@ yay -S --noconfirm  ntp
 sudo systemctl enable ntpd.service
 sudo ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
+# https://www.thegeekdiary.com/how-to-configure-and-manage-network-connections-using-nmcli/
+
 echo "  Connectivity shit..."
 WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
