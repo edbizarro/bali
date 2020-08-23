@@ -49,7 +49,7 @@ yay -S --noconfirm tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuc
 
 echo "  Installing dev stuff"
 yay -S --noconfirm tfsec tflint kind velero-bin helm minikube kubectl python-black tldr borg-bin google-chrome ansible terraform terraform-docs-bin terraform-inventory-git pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin php-language-server bash-language-server python-language-server vue-language-server visual-studio-code-bin atom apm jetbrains-toolbox docker docker-compose
-apm install wakatime editorconfig language-blade autocomplete-paths busy-signal atom-ide-signature-help atom-ide-markdown-service terraform-fmt ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap rainbow-csv
+apm sort-lines install wakatime editorconfig language-blade autocomplete-paths busy-signal atom-ide-signature-help atom-ide-markdown-service terraform-fmt ide-bash ide-docker ide-vue ide-css ide-json atom-ide-ui language-vue ide-yaml atom-ide-datatip atom-ide-definitions ide-php atom-ide-signature-help atom-material-syntax-dark pigments file-icons styri-syntax duotone-dark-sky-syntax pristine-ui emmet atom-beautify git-blame project-manager highlight-selected minimap rainbow-csv
 
 echo "  Installing productivity tools"
 yay -S --noconfirm slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser boostnote
