@@ -61,9 +61,7 @@ echo "     ...fonts "
 yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons inxi glxinfo
-sudo systemctl enable bumblebeed.service
-sudo usermod -aG bumblebee $USER
+yay -S --noconfirm bbswitch mons inxi glxinfo
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
@@ -79,7 +77,7 @@ echo "  Auto tune powertop..."
 sudo powertop --auto-tune
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm picard spotify bum-git mpv mpc cava alsa-utils alsa-lib ncmpcpp lyvi-git
+yay -S --noconfirm picard bum-git mpv mpc cava alsa-utils alsa-lib ncmpcpp lyvi-git
 
 echo "  Installing touchpad packages..."
 yay -S --noconfirm libinput xf86-input-libinput
