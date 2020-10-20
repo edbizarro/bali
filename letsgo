@@ -58,7 +58,7 @@ echo "  Installing ricing shit..."
 yay -S --noconfirm lxappearance neofetch thunar light polybar picom scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen 
 
 echo "     ...fonts "
-yay -S --noconfirm xorg-font-utils gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete
+yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete
 
 echo "  Installing display drivers & tools..."
   yay -S --noconfirm bumblebee primus mesa nvidia nvidia-settings bbswitch mons inxi glxinfo
