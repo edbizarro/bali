@@ -16,6 +16,7 @@ In case you have a Dell laptop (like me) you should see these posts:
 
 - http://www.saminiir.com/configuring-arch-linux-on-dell-xps-15
 - https://publications.petrzemek.net/articles/Dell-G5-15-Gaming-5590-Arch-Linux/
+- https://github.com/Frogging-Family/nvidia-all
 
 ---
 
