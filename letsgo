@@ -66,10 +66,11 @@ yay -S --noconfirm bbswitch mons inxi glxinfo
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Temp Cº, battery and power manager..."
-yay -S --noconfirm lm_sensors i8kutils tcl tk dell-bios-fan-control-git tlp acpi acpid
+yay -S --noconfirm lm_sensors i8kutils tcl tk dell-bios-fan-control-git tlp powertop acpi acpid
 sudo dell-bios-fan-control 0
 sudo systemctl enable i8kmon.service
 sudo systemctl enable tlp.service
+sudo systemctl enable powertop.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 
 echo "  Installing music & audio manager..."
