@@ -65,14 +65,18 @@ yay -S --noconfirm bbswitch mons inxi glxinfo autorandr
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Temp Cº, battery and power manager..."
-yay -S --noconfirm lm_sensors i8kutils tcl tk dell-bios-fan-control-git powertop acpi acpid power-profiles-daemon
+yay -S --noconfirm lm_sensors i8kutils tcl tlpui-git tlp tk dell-bios-fan-control-git powertop acpi acpid thermald
 sudo dell-bios-fan-control 0
-sudo systemctl enable i8kmon.service
-sudo systemctl enable powertop.service
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+sudo systemctl enable i8kmon.service
+sudo systemctl enable thermald.service
+sudo systemctl enable tlp.service
+sudo systemctl start thermald.service
+sudo systemctl start i8kmon.service
+sudo systemctl start tlp.service
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm picard bum-git mpv mpc cava alsa-utils alsa-lib ncmpcpp lyvi-git
+yay -S --noconfirm picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
 
 echo "  Installing touchpad packages..."
 yay -S --noconfirm libinput xf86-input-libinput
