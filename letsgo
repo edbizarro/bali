@@ -74,6 +74,7 @@ sudo systemctl enable tlp.service
 sudo systemctl start thermald.service
 sudo systemctl start i8kmon.service
 sudo systemctl start tlp.service
+# https://wiki.archlinux.org/title/TLP#USB_autosuspend
 
 echo "  Installing music & audio manager..."
 yay -S --noconfirm picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
