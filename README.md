@@ -14,10 +14,10 @@ chmod +x letsgo
 
 In case you have a Dell laptop (like me) you should read these posts:
 
+- https://wiki.archlinux.org/title/NVIDIA/Troubleshooting#Modprobe_Error:_%22Could_not_insert_'nvidia':_No_such_device%22_on_linux_%3E=4.8
 - http://www.saminiir.com/configuring-arch-linux-on-dell-xps-15
 - https://publications.petrzemek.net/articles/Dell-G5-15-Gaming-5590-Arch-Linux/
 - https://github.com/Frogging-Family/nvidia-all
-- https://gitlab.freedesktop.org/hadess/power-profiles-daemon
 
 ### Other (good) sources
 
