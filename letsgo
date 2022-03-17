@@ -77,7 +77,7 @@ sudo systemctl start tlp.service
 # https://wiki.archlinux.org/title/TLP#USB_autosuspend
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm mopidy-autoplay mopidy-spotify mopidy-mpd mopidy-scrobbler mopidy-youtube mopidy-local picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
+yay -S --noconfirm mopidy-spotify mopidy-mpd mopidy-scrobbler mopidy-youtube mopidy-local mopidy mopidy-autoplay mopidy-iris picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
 
 echo "  Installing touchpad packages..."
 yay -S --noconfirm libinput xf86-input-libinput
