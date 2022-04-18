@@ -45,7 +45,7 @@ if ! grep "^noarp$" /etc/dhcpcd.conf; then
 fi
 
 echo "  Installing terminal stuff..."
-yay -S --noconfirm udiskie speedtest-cli playerctl fio blueman bluez bluez-utils tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop-c rxvt-unicode-pixbuf tmux neovim stow ncdu slurm
+yay -S --noconfirm udiskie speedtest-cli playerctl fio blueman bluez bluez-utils tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop-c rxvt-unicode-pixbuf tmux neovim stow ncdu slurm pacman-cleanup-hook
 
 echo "  Installing dev stuff"
 yay -S --noconfirm google-cloud-sdk tfsec tflint velero-bin helm minikube kubectl python-black tldr borg borgmatic google-chrome terraform terraform-docs-bin pyenv pyenv-virtualenv nodejs yarn npm dockerfile-language-server-bin bash-language-server python-language-server visual-studio-code-bin jetbrains-toolbox docker docker-compose
