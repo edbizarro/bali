@@ -60,7 +60,7 @@ echo "     ...fonts "
 yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete
 
 echo "  Installing display drivers & tools..."
-yay -S --noconfirm bbswitch mons inxi glxinfo autorandr envycontrol nvidia-container-toolkit
+yay -S --noconfirm bbswitch mons inxi glxinfo autorandr envycontrol nvidia-container-toolkit v4l-utils
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
