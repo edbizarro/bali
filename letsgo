@@ -54,7 +54,7 @@ echo "  Installing productivity tools"
 yay -S --noconfirm zoom slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser
 
 echo "  Installing ricing shit..."
-yay -S --noconfirm lxappearance-gtk3 neofetch thunar tumbler light polybar picom scrot feh python-pywal i3-gaps dunst rofi unclutter betterlockscreen
+yay -S --noconfirm lxappearance-gtk3 neofetch thunar tumbler light polybar picom scrot feh python-pywal i3-wm dunst rofi unclutter betterlockscreen
 
 echo "     ...fonts "
 yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf ttf-fira-code ttf-jetbrains-mono tamzen-font nerd-fonts-complete
