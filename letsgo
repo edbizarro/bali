@@ -54,7 +54,7 @@ echo "  Installing productivity tools"
 yay -S --noconfirm zoom slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser
 
 echo "  Installing ricing shit..."
-yay -S --noconfirm lxappearance-gtk3 neofetch thunar tumbler light polybar picom scrot feh python-pywal i3-wm dunst rofi unclutter betterlockscreen
+yay -S --noconfirm lxappearance-gtk3 fastfetch thunar tumbler light polybar picom scrot feh python-pywal i3-wm dunst rofi unclutter betterlockscreen
 
 echo "     ...fonts "
 yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf tamzen-font ttf-ubuntu-nerd ttf-ubuntu-mono-nerd ttf-roboto-mono-nerd ttf-meslo-nerd ttf-jetbrains-mono-nerd ttf-inconsolata-nerd ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-inconsolata-nerd ttf-hack-nerd ttf-dejavu-nerd otf-droid-nerd ttf-victor-mono-nerd ttf-firacode-nerd ttf-dejavu-nerd otf-firamono-nerd
