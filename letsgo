@@ -45,10 +45,10 @@ if ! grep "^noarp$" /etc/dhcpcd.conf; then
 fi
 
 echo "  Installing terminal stuff..."
-yay -S --noconfirm udiskie speedtest-cli playerctl fio blueman bluez bluez-utils tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop-c rxvt-unicode-pixbuf tmux neovim stow ncdu slurm pacman-cleanup-hook
+yay -S --noconfirm udiskie speedtest-cli playerctl fio blueman bluez bluez-utils tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop-c rxvt-unicode-truecolor-wide-glyphs tmux neovim stow ncdu slurm pacman-cleanup-hook
 
 echo "  Installing dev stuff"
-yay -S --noconfirm google-cloud-sdk tfsec tflint velero-bin helm minikube kubectl python-black tldr borg borgmatic google-chrome terraform terraform-docs-bin pyenv pyenv-virtualenv nodejs yarn npm visual-studio-code-bin jetbrains-toolbox docker docker-compose
+yay -S --noconfirm google-cloud-sdk tflint helm minikube kubectl tldr borg borgmatic google-chrome terraform terraform-docs-bin pyenv pyenv-virtualenv nodejs npm visual-studio-code-bin jetbrains-toolbox docker docker-compose
 
 echo "  Installing productivity tools"
 yay -S --noconfirm zoom slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser
@@ -77,7 +77,7 @@ sudo systemctl start tlp.service
 # https://wiki.archlinux.org/title/TLP#USB_autosuspend
 
 echo "  Installing music & audio manager..."
-yay -S --noconfirm httpx python-pyspotify python-uritools python-ytmusicapi mopidy-spotify mopidy-mpd mopidy-scrobbler mopidy-youtube mopidy-local mopidy mopidy-autoplay mopidy-iris picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
+yay -S --noconfirm httpx python-uritools python-ytmusicapi mopidy-spotify-git mopidy-mpd mopidy-scrobbler mopidy-youtube mopidy-local mopidy mopidy-autoplay mopidy-iris picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
 
 echo "  Installing touchpad packages..."
 yay -S --noconfirm libinput xf86-input-libinput
