@@ -65,15 +65,13 @@ yay -S --noconfirm bbswitch mons inxi glxinfo autorandr envycontrol nvidia-conta
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
 echo "  Temp Cº, battery and power manager..."
-yay -S --noconfirm lm_sensors i8kutils tcl tlpui tlp tk dell-bios-fan-control-git powertop acpi acpid thermald
+yay -S --noconfirm auto-cpufreq lm_sensors i8kutils tcl tk dell-bios-fan-control-git powertop acpi acpid thermald
 sudo dell-bios-fan-control 0
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
-sudo systemctl enable i8kmon.service
-sudo systemctl enable thermald.service
-sudo systemctl enable tlp.service
-sudo systemctl start thermald.service
-sudo systemctl start i8kmon.service
-sudo systemctl start tlp.service
+sudo systemctl enable --now i8kmon.service
+sudo systemctl enable --now thermald.service
+sudo systemctl enable --now auto-cpufreq
+sudo auto-cpufreq --install
 # https://wiki.archlinux.org/title/TLP#USB_autosuspend
 
 echo "  Installing music & audio manager..."
