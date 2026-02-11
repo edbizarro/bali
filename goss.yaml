@@ -10,5 +10,9 @@ package:
     installed: true
   gotop:
     installed: true
-  ansible:
+  btop:
+    installed: true
+  zsh:
+    installed: true
+  tmux:
     installed: true

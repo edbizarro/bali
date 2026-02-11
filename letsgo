@@ -48,7 +48,7 @@ echo "  Installing terminal stuff..."
 yay -S --noconfirm udiskie speedtest-cli playerctl fio blueman bluez bluez-utils tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuck cronie fasd ctop-bin gotop-bin zsh htop iotop-c rxvt-unicode-truecolor-wide-glyphs tmux neovim stow ncdu slurm pacman-cleanup-hook
 
 echo "  Installing dev stuff"
-yay -S --noconfirm google-cloud-sdk tflint helm minikube kubectl tldr borg borgmatic google-chrome terraform terraform-docs-bin pyenv pyenv-virtualenv nodejs npm visual-studio-code-bin jetbrains-toolbox docker docker-compose
+yay -S --noconfirm google-cloud-sdk tflint helm minikube kubectl borg borgmatic google-chrome terraform terraform-docs-bin pyenv pyenv-virtualenv nodejs npm visual-studio-code-bin jetbrains-toolbox docker docker-compose
 
 echo "  Installing productivity tools"
 yay -S --noconfirm zoom slack-desktop zip unzip unrar p7zip libreoffice-fresh rclone rclone-browser
@@ -57,7 +57,7 @@ echo "  Installing ricing shit..."
 yay -S --noconfirm lxappearance-gtk3 fastfetch thunar tumbler light polybar picom scrot feh python-pywal i3-wm dunst rofi unclutter betterlockscreen
 
 echo "     ...fonts "
-yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf tamzen-font ttf-ubuntu-nerd ttf-ubuntu-mono-nerd ttf-roboto-mono-nerd ttf-meslo-nerd ttf-jetbrains-mono-nerd ttf-inconsolata-nerd ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-inconsolata-nerd ttf-hack-nerd ttf-dejavu-nerd otf-droid-nerd ttf-victor-mono-nerd ttf-firacode-nerd ttf-dejavu-nerd otf-firamono-nerd
+yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco-pro otf-san-francisco-mono cozette-ttf tamzen-font ttf-ubuntu-nerd ttf-ubuntu-mono-nerd ttf-roboto-mono-nerd ttf-meslo-nerd ttf-jetbrains-mono-nerd ttf-inconsolata-nerd ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-hack-nerd ttf-dejavu-nerd otf-droid-nerd ttf-victor-mono-nerd ttf-firacode-nerd otf-firamono-nerd
 
 echo "  Installing display drivers & tools..."
 yay -S --noconfirm bbswitch mons inxi glxinfo autorandr envycontrol nvidia-container-toolkit v4l-utils guvcview
