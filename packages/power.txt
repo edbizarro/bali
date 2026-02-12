@@ -1,0 +1,11 @@
+# Temperature, battery and power management (Dell-specific)
+acpi
+acpid
+auto-cpufreq
+dell-bios-fan-control-git
+i8kutils
+lm_sensors
+powertop
+tcl
+thermald
+tk

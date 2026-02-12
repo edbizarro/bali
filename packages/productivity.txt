@@ -1,0 +1,12 @@
+# Productivity, communication and file management
+7zip
+borg
+borgmatic
+google-chrome
+libreoffice-fresh
+rclone
+rclone-browser
+slack-desktop
+unrar
+unzip
+zip

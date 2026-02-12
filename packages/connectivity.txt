@@ -1,0 +1,11 @@
+# Wireless, bluetooth and network tools
+blueman
+bluez
+bluez-utils
+dialog
+iw
+netctl
+vnstat
+wireless_tools
+wpa_actiond
+wpa_supplicant

@@ -1,0 +1,23 @@
+# Music players, audio stack and streaming
+alsa-lib
+alsa-utils
+bum-git
+cava
+python-httpx
+mopidy
+mopidy-autoplay
+mopidy-iris
+mopidy-local
+mopidy-mpd
+mopidy-scrobbler
+mopidy-spotify-git
+mopidy-youtube
+mpc
+mpv
+ncmpcpp
+picard
+pipewire-alsa
+pipewire-pulse
+python-setuptools-scm
+python-uritools
+python-ytmusicapi

@@ -1,0 +1,10 @@
+# Display drivers, GPU tools and monitor management
+autorandr
+bbswitch
+envycontrol
+guvcview
+inxi
+mesa-utils
+mons
+nvidia-container-toolkit
+v4l-utils

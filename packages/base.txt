@@ -1,0 +1,3 @@
+# Base packages (installed via pacman before yay is available)
+openssh
+git

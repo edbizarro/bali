@@ -1,0 +1,9 @@
+# Development tools, cloud and infrastructure
+fio
+google-cloud-cli
+kubectl
+nodejs-lts-jod
+npm
+pyenv
+pyenv-virtualenv
+visual-studio-code-bin

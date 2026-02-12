@@ -1,0 +1,22 @@
+# Fonts and character tools
+cozette-ttf
+gucharmap
+otf-droid-nerd
+otf-firamono-nerd
+otf-metropolis
+otf-san-francisco
+otf-san-francisco-mono
+tamzen-font
+ttf-dejavu-nerd
+ttf-firacode-nerd
+ttf-hack-nerd
+ttf-inconsolata-nerd
+ttf-iosevka-nerd
+ttf-iosevkaterm-nerd
+ttf-jetbrains-mono-nerd
+ttf-meslo-nerd
+ttf-roboto-mono-nerd
+ttf-ubuntu-mono-nerd
+ttf-ubuntu-nerd
+ttf-victor-mono-nerd
+xorg-font-util

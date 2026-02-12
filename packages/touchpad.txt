@@ -1,0 +1,3 @@
+# Touchpad and input drivers
+libinput
+xf86-input-libinput

@@ -1,0 +1,16 @@
+# Desktop customization, window manager and appearance
+betterlockscreen
+dunst
+fastfetch
+feh
+i3-wm
+light
+lxappearance
+picom
+polybar
+python-pywal
+rofi
+scrot
+thunar
+tumbler
+unclutter

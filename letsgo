@@ -1,71 +1,204 @@
 #!/bin/bash
 
+set -o pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGES_DIR="${SCRIPT_DIR}/packages"
+
+FAILED_SECTIONS=()
+FAILED_NAMES=()
+FAILED_ERRORS=()
+SUCCESS_COUNT=0
+TOTAL_COUNT=0
+
+LOG_FILE=$(mktemp "/tmp/bali-install-$(date '+%Y%m%d-%H%M%S')-XXXXXX.log")
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+read_packages() {
+    local file="$1"
+    while IFS= read -r pkg || [[ -n "$pkg" ]]; do
+        pkg="${pkg%%#*}"       # strip inline comments
+        pkg="$(echo "$pkg" | xargs)" # trim whitespace
+        [[ -z "$pkg" ]] && continue
+        echo "$pkg"
+    done < "$file"
+}
+
+install_packages() {
+    local file="${PACKAGES_DIR}/$1"
+    local label="$2"
+    local installer="${3:-yay}"
+
+    if [[ ! -f "$file" ]]; then
+        echo "  ⚠ Package list not found: $file"
+        return
+    fi
+
+    echo ""
+    echo "━━━ ${label} ━━━"
+
+    while IFS= read -r pkg; do
+        ((TOTAL_COUNT++))
+        printf "  %-40s" "$pkg"
+
+        local err_output err_file
+        err_file=$(mktemp)
+        err_output=$($installer -S --noconfirm --needed "$pkg" 2>&1; echo "$?" > "$err_file")
+        echo "$err_output" >> "$LOG_FILE"
+        local exit_code
+        exit_code=$(<"$err_file")
+        rm -f "$err_file"
+
+        if [[ "$exit_code" -eq 0 ]]; then
+            echo "✓"
+            ((SUCCESS_COUNT++))
+        else
+            echo "✗ FAILED"
+            FAILED_SECTIONS+=("$label")
+            FAILED_NAMES+=("$pkg")
+            # Capture last meaningful error line
+            local err_msg
+            err_msg=$(echo "$err_output" | grep -i -E '(error|fatal|not found|could not|unable to|failed)' | tail -1)
+            FAILED_ERRORS+=("${err_msg:-unknown error (see log file)}")
+        fi
+    done < <(read_packages "$file")
+}
+
+print_report() {
+    local failed_count=${#FAILED_NAMES[@]}
+
+    echo ""
+    echo "┌────────────────────────────────────────────────────────────┐"
+    echo "│                    INSTALLATION REPORT                     │"
+    echo "├────────────────────┬─────────────────────┬─────────────────┤"
+    echo "│ Total packages     │ Succeeded           │ Failed          │"
+    echo "├────────────────────┼─────────────────────┼─────────────────┤"
+    printf "│ %-18s │ %-19s │ %-15s │\n" "$TOTAL_COUNT" "$SUCCESS_COUNT" "$failed_count"
+    echo "└────────────────────┴─────────────────────┴─────────────────┘"
+
+    if [[ $failed_count -gt 0 ]]; then
+        echo ""
+        echo "┌────────────────────────────────────────────────────────────┐"
+        printf "│              ⚠  FAILED PACKAGES (%-3s)                     │\n" "$failed_count"
+        echo "├─────┬──────────────────────┬─────────────────────────────┤"
+        echo "│  #  │ Section              │ Package                     │"
+        echo "├─────┼──────────────────────┼─────────────────────────────┤"
+        for i in "${!FAILED_NAMES[@]}"; do
+            printf "│ %3d │ %-20s │ %-27s │\n" \
+                "$((i + 1))" "${FAILED_SECTIONS[$i]}" "${FAILED_NAMES[$i]}"
+        done
+        echo "└─────┴──────────────────────┴─────────────────────────────┘"
+
+        echo ""
+        echo "┌────────────────────────────────────────────────────────────┐"
+        echo "│                    ERROR DETAILS                          │"
+        echo "└────────────────────────────────────────────────────────────┘"
+        for i in "${!FAILED_NAMES[@]}"; do
+            echo ""
+            echo "  [$((i + 1))] ${FAILED_NAMES[$i]} (${FAILED_SECTIONS[$i]})"
+            echo "      ${FAILED_ERRORS[$i]}"
+        done
+    fi
+
+    echo ""
+    echo "  Log file: $LOG_FILE"
+    echo ""
+}
+
+# ---------------------------------------------------------------------------
+# System bootstrap (pacman only — yay not available yet)
+# ---------------------------------------------------------------------------
+
 clear
 
-echo "  Misc..."
-sudo pacman -Syy --noconfirm openssh git
+echo "━━━ System bootstrap ━━━"
+echo "  Log file: $LOG_FILE"
 
-echo "  Ensure keys are up to date..."
-sudo pacman-key --refresh-keys
+echo "  Syncing package databases..."
+sudo pacman -Syy --noconfirm 2>&1 | tee -a "$LOG_FILE"
 
-echo "  Update the system..."
-sudo pacman -Syyu
+#echo "  Refreshing pacman keys..."
+#sudo pacman-key --refresh-keys 2>&1 | tee -a "$LOG_FILE"
 
-echo "  Installing Yay..."
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
+echo "  Updating system..."
+sudo pacman -Syu --noconfirm 2>&1 | tee -a "$LOG_FILE"
 
-echo "  Updating the AUR packages..."
-yay -Syuu --noconfirm
+install_packages "base.txt" "Base packages" "sudo pacman"
 
-echo "  DateTime..."
-yay -S --noconfirm  ntp
+# ---------------------------------------------------------------------------
+# Install yay (AUR helper)
+# ---------------------------------------------------------------------------
+
+echo ""
+echo "━━━ Installing yay ━━━"
+
+if ! command -v yay &> /dev/null; then
+    (
+        cd "$(mktemp -d)" || exit 1
+        git clone https://aur.archlinux.org/yay.git . 2>&1 | tee -a "$LOG_FILE"
+        makepkg -si --noconfirm 2>&1 | tee -a "$LOG_FILE"
+    )
+else
+    echo "  yay already installed, skipping."
+fi
+
+echo "  Updating AUR packages..."
+yay -Syuu --noconfirm 2>&1 | tee -a "$LOG_FILE"
+
+# ---------------------------------------------------------------------------
+# DateTime
+# ---------------------------------------------------------------------------
+
+install_packages "datetime.txt" "Date & Time"
+
 sudo systemctl enable ntpd.service
 sudo ln -sfv /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
 
+# ---------------------------------------------------------------------------
+# Connectivity (conditional on detected interfaces)
+# ---------------------------------------------------------------------------
+
 # https://www.thegeekdiary.com/how-to-configure-and-manage-network-connections-using-nmcli/
 
-echo "  Connectivity shit..."
-WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}'| sed 's/://' | sed '1!d')
+WIRELESS_DEV=$(ip link | grep wlp | awk '{print $2}' | sed 's/://' | sed '1!d')
 if [[ -n $WIRELESS_DEV ]]; then
-    echo "==> ${WIRELESS_DEV} interface detected"
-    echo "  Installing wifi packages..."
-    yay -S --noconfirm iw wireless_tools wpa_actiond wpa_supplicant dialog netctl vnstat blueman bluez bluez-utils
+    echo ""
+    echo "==> ${WIRELESS_DEV} wireless interface detected"
+    install_packages "connectivity.txt" "Connectivity"
 fi
 
-WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}'| sed 's/://' | sed '1!d')
+WIRED_DEV=$(ip link | grep "en[sop]" | awk '{print $2}' | sed 's/://' | sed '1!d')
 if [[ -n $WIRED_DEV ]]; then
-    echo "==> ${WIRED_DEV} interface detected"
-    sudo systemctl enable dhcpcd@${WIRED_DEV}.service
+    echo "==> ${WIRED_DEV} wired interface detected"
+    sudo systemctl enable "dhcpcd@${WIRED_DEV}.service"
 fi
 
-if ! grep "^noarp$" /etc/dhcpcd.conf; then
+if ! grep -q "^noarp$" /etc/dhcpcd.conf 2>/dev/null; then
     echo -e "\nnoarp" | sudo tee -a /etc/dhcpcd.conf
 fi
 
-echo "  Installing terminal stuff..."
-yay -S --noconfirm udiskie speedtest-cli playerctl tldr git-delta bat fzf aria2 xclip rsync gnome-keyring thefuck cronie fasd ctop gotop-bin zsh htop iotop-c rxvt-unicode-truecolor-wide-glyphs tmux neovim stow ncdu slurm pacman-cleanup-hook docker docker-compose
+# ---------------------------------------------------------------------------
+# Package sections
+# ---------------------------------------------------------------------------
 
-echo "  Installing dev stuff"
-yay -S --noconfirm google-cloud-cli tflint helm minikube kubectl fio terraform terraform-docs-bin pyenv pyenv-virtualenv nodejs npm visual-studio-code-bin jetbrains-toolbox
+install_packages "terminal.txt"     "Terminal & Shell"
+install_packages "dev.txt"          "Development"
+install_packages "productivity.txt" "Productivity"
+install_packages "ricing.txt"       "Ricing & WM"
+install_packages "fonts.txt"        "Fonts"
+install_packages "display.txt"      "Display & GPU"
 
-echo "  Installing productivity tools"
-yay -S --noconfirm zoom slack-desktop zip unzip unrar 7zip libreoffice-fresh rclone rclone-browser borg borgmatic google-chrome
+# ---------------------------------------------------------------------------
+# Power management (Dell-specific post-install)
+# ---------------------------------------------------------------------------
 
-echo "  Installing ricing shit..."
-yay -S --noconfirm lxappearance fastfetch thunar tumbler light polybar picom scrot feh python-pywal i3-wm dunst rofi unclutter betterlockscreen
-
-echo "     ...fonts "
-yay -S --noconfirm xorg-font-util gucharmap otf-san-francisco otf-san-francisco-mono cozette-ttf tamzen-font ttf-ubuntu-nerd ttf-ubuntu-mono-nerd ttf-roboto-mono-nerd ttf-meslo-nerd ttf-jetbrains-mono-nerd ttf-inconsolata-nerd ttf-iosevka-nerd ttf-iosevkaterm-nerd ttf-hack-nerd ttf-dejavu-nerd otf-droid-nerd ttf-victor-mono-nerd ttf-firacode-nerd otf-firamono-nerd
-
-echo "  Installing display drivers & tools..."
-yay -S --noconfirm bbswitch mons inxi mesa-utils autorandr envycontrol nvidia-container-toolkit v4l-utils guvcview
+install_packages "power.txt" "Power & Thermal"
 
 # https://wiki.archlinux.org/index.php/fan_speed_control#Fancontrol_(lm-sensors)
 # https://wiki.archlinux.org/index.php/Laptop_Mode_Tools#Configuration
-echo "  Temp Cº, battery and power manager..."
-yay -S --noconfirm auto-cpufreq lm_sensors i8kutils tcl tk dell-bios-fan-control-git powertop acpi acpid thermald
 sudo dell-bios-fan-control 0
 sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
 sudo systemctl enable --now i8kmon.service
@@ -74,8 +207,20 @@ sudo systemctl enable --now auto-cpufreq
 sudo auto-cpufreq --install
 # https://wiki.archlinux.org/title/TLP#USB_autosuspend
 
-echo "  Installing music & audio manager..."
-yay -S --noconfirm httpx python-uritools python-ytmusicapi mopidy-spotify-git mopidy-mpd mopidy-scrobbler mopidy-youtube mopidy-local mopidy mopidy-autoplay mopidy-iris picard bum-git mpv mpc cava alsa-utils alsa-lib pipewire-alsa pipewire-pulse ncmpcpp lyvi-git
+# ---------------------------------------------------------------------------
+# Audio & Music
+# ---------------------------------------------------------------------------
 
-echo "  Installing touchpad packages..."
-yay -S --noconfirm libinput xf86-input-libinput
+install_packages "audio.txt" "Audio & Music"
+
+# ---------------------------------------------------------------------------
+# Touchpad
+# ---------------------------------------------------------------------------
+
+install_packages "touchpad.txt" "Touchpad & Input"
+
+# ---------------------------------------------------------------------------
+# Report
+# ---------------------------------------------------------------------------
+
+print_report
